@@ -138,8 +138,8 @@ jobs:
               --dest-server https://kubernetes.default.svc \
               --dest-namespace ${{ values.app_env }} \
               --sync-policy none \
-              --sync-option CreateNamespace=true \
-              --name-template $(echo ${{'${{ env.ARGOCD_APP_NAME }}'}} | tr '[:upper:]' '[:lower:]')
+              --sync-option CreateNamespace=true
+              
           fi
 
       - name: Sync ArgoCD Application
