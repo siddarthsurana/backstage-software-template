@@ -126,10 +126,10 @@ jobs:
             --username ${{'${{ secrets.ARGOCD_USERNAME }}'}} \
             --password ${{'${{ secrets.ARGOCD_PASSWORD }}'}} \
             --insecure
-            
+
       - name: Check Repo and add application if not exists
         run: |
-          argocd repo list | grep -q ${{'${{ github.repository }}'}} || argocd repo add ${{'${{ github.repository }}'}}
+          argocd repo list | grep -q https://github.com/${{'${{ github.repository }}'}} || argocd repo add https://github.com/${{'${{ github.repository }}'}}
           if ! argocd app get ${{'${{ env.ARGOCD_APP_NAME }}'}} &>/dev/null; then
             argocd app create ${{'${{ env.ARGOCD_APP_NAME }}'}} \
               --repo https://github.com/${{'${{ github.repository }}'}} \
