@@ -137,7 +137,6 @@ jobs:
               --values helm/${{ values.app_name }}/values.yaml \
               --dest-server https://kubernetes.default.svc \
               --dest-namespace ${{ values.app_env }} \
-              --revision master \
               --sync-policy manual \
               --sync-option CreateNamespace=true
           fi
