@@ -140,8 +140,6 @@ jobs:
               --revision master \
               --sync-policy manual \
               --sync-option CreateNamespace=true \
-              --auto-prune \
-              --self-heal
           fi
 
       - name: Sync ArgoCD Application
