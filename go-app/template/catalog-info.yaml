@@ -4,7 +4,7 @@ metadata:
   name: ${{ values.app_name }}
   description: A simple Go app
   annotations:
-    github.com/project-slug: siddarthsurana/${{ values.app_name }}
+    github.com/project-slug: siddarthsurana-org/${{ values.app_name }}
     backstage.io/techdocs-ref: dir:.
 spec:
   type: service
