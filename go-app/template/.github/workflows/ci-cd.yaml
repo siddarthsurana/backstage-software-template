@@ -116,9 +116,10 @@ jobs:
       
       - name: Install ArgoCD CLI
         run: |
-          curl -sSL -o argocd-linux-amd64 https://github.com/argoproj/argo-cd/releases/latest/download/argocd-linux-amd64
-          sudo install -m 555 argocd-linux-amd64 /usr/local/bin/argocd
-          rm argocd-linux-amd64
+          curl -ksSL -o argocd https://argocd-server.argocd/download/argocd-linux-amd64
+          chmod +x argocd
+          sudo mv ./argocd /usr/local/bin/argocd
+
           
       - name: Login to ArgoCD
         run: |
@@ -134,7 +135,7 @@ jobs:
             argocd app create ${{'${{ env.ARGOCD_APP_NAME }}'}} \
               --repo https://github.com/${{'${{ github.repository }}'}} \
               --path helm/${{ values.app_name }} \
-              --values helm/${{ values.app_name }}/values.yaml \
+              --values values.yaml \
               --dest-server https://kubernetes.default.svc \
               --dest-namespace ${{ values.app_env }} \
               --sync-policy manual \
