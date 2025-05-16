@@ -1,0 +1,46 @@
+# Application configuration
+app:
+  name: ${{ values.app_name }}
+  image:
+    repository: docker.io/sssurana90/${{ values.app_name }}
+    tag: sha-fc3081b
+    pullPolicy: IfNotPresent
+  imagePullSecrets:
+    - name: regcred1
+
+# Deployment configuration
+deployment:
+  replicas: 2
+  resources:
+    requests:
+      memory: "64Mi"
+      cpu: "100m"
+    limits:
+      memory: "128Mi"
+      cpu: "200m"
+  livenessProbe:
+    path: /healthz
+    port: 8080
+    initialDelaySeconds: 5
+    periodSeconds: 10
+  readinessProbe:
+    path: /ready
+    port: 8080
+    initialDelaySeconds: 5
+    periodSeconds: 10
+
+# Service configuration
+service:
+  type: ClusterIP
+  port: 80
+  targetPort: 8080
+
+# Ingress configuration
+ingress:
+  enabled: true
+  className: "nginx"
+  host: ${{ values.app_name }}.web.com
+  path: /
+  pathType: Prefix
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: / 
