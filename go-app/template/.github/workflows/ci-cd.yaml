@@ -137,7 +137,7 @@ jobs:
               --values values.yaml \
               --dest-server https://kubernetes.default.svc \
               --dest-namespace ${{ values.app_env }} \
-              --sync-policy manual \
+              --sync-policy none \
               --sync-option CreateNamespace=true
           fi
 
