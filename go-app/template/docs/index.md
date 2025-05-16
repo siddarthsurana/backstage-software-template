@@ -1,4 +1,4 @@
-# Simple {{values.app_name}} API
+# Simple ${{ values.app_name }} API
 
 A simple RESTful API built with Go and Gin framework, similar to Flask in Python. This API provides basic CRUD operations for managing todo items.
 
@@ -16,7 +16,7 @@ A simple RESTful API built with Go and Gin framework, similar to Flask in Python
 1. Clone the repository:
 ```bash
 git clone <your-repo-url>
-cd {{values.app_name}}
+cd ${{ values.app_name }}
 ```
 
 2. Install dependencies:
