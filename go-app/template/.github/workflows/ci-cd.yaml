@@ -136,10 +136,10 @@ jobs:
               --path helm/${{ values.app_name }} \
               --values helm/${{ values.app_name }}/values.yaml \
               --dest-server https://kubernetes.default.svc \
-              --dest-namespace ${{values.app_env }} \
+              --dest-namespace ${{ values.app_env }} \
               --revision master \
               --sync-policy manual \
-              --sync-option CreateNamespace=true \
+              --sync-option CreateNamespace=true
           fi
 
       - name: Sync ArgoCD Application
