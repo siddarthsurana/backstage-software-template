@@ -1,0 +1,13 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: ${{values.app_name}}
+  description: Project to deploy Hashicups via backstage
+  annotations:
+    github.com/project-slug: siddarthsurana-org/${{values.app_name}}
+    backstage.io/techdocs-ref: dir:.
+spec:
+  type: service
+  lifecycle: experimental
+  owner: siddarthsurana
+
